@@ -100,11 +100,12 @@ Drill.Site = {
 
 Drill.Docs = {
   init : function(){
-    Drill.Docs.add_expand_contract_buttons();
-    Drill.Docs.show_or_hide_on_click();
+    Drill.Docs.addExpandContractButtons();
+    Drill.Docs.showOrHideOnClick();
     Drill.Docs.setCurrentDoc();
     Drill.Docs.watchDocTocClicks();
     Drill.Docs.watchExpandTocClicks();
+    Drill.Docs.collapseOnOrientationChange();
     Drill.Docs.permalinkSubHeaders();
   },
 
@@ -135,13 +136,20 @@ Drill.Docs = {
     })
   },
 
+  collapseOnOrientationChange : function () {
+    $(window).on("orientationchange", function() {
+      Drill.Docs._contractSidebar();
+      Drill.Docs._contractView();
+    });
+  },
+
   watchDocTocClicks : function(){
     $('li.toctree-l1').on('click', function(){
       Drill.Docs._make_current(this);
     })
   },
 
-  show_or_hide_on_click : function() {
+  showOrHideOnClick : function() {
     var l2nodes = $('li.toctree-l2').filter(function(){ 
       return $(this).next('ul').length > 0;
     });
@@ -176,7 +184,7 @@ Drill.Docs = {
   },
 
 
-  add_expand_contract_buttons : function() {
+  addExpandContractButtons : function() {
     var expand_btn = '<span class="expand show"><i class="fa fa-plus"></i></span>';
     var contract_btn = '<span class="contract"><i class="fa fa-minus"></i></span>';
     $('li.toctree-l2').filter(function(){ 
@@ -216,7 +224,7 @@ Drill.Docs = {
   },
 
   _expandView : function(){
-    $("nav.breadcrumbs").addClass("force-expand");
+    $("nav.breadcrumbs ul").addClass("force-expand");
     $(".main-content").addClass("force-expand");
     $("#footer").addClass("force-expand");
   },
@@ -226,7 +234,7 @@ Drill.Docs = {
   },
 
   _contractView : function() {
-    $("nav.breadcrumbs li:first").removeClass("force-expand");
+    $("nav.breadcrumbs ul").removeClass("force-expand");
     $(".main-content").removeClass("force-expand");
     $("#footer").removeClass("force-expand");
   },

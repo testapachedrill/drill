@@ -351,7 +351,7 @@ span.expand.show, span.contract.show {
   .page-wrap #footer {
     width: auto;
   }
-  .breadcrumbs.force-expand li:first-of-type {
+  .breadcrumbs ul.force-expand li:first-of-type {
     margin-left: 301px;
   }
 }
@@ -375,7 +375,7 @@ span.expand.show, span.contract.show {
  .breadcrumbs {
     margin-left: 0px;
   }
-  .breadcrumbs li:first-of-type {
+  .breadcrumbs ul {
     margin-left: 301px;
   }
 }

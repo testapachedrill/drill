@@ -9,17 +9,24 @@
   border-bottom: solid 1px #E4E4E4;
   width: 100%;
 }
-
-.breadcrumbs>*
+.breadcrumbs ul li
 {
+  display: inline;
+}
+
+.breadcrumbs ul
+{
+
+  list-style-type:none;
   margin: 0;
+  padding: 0;
   float: left;
   font-size: 0.6875rem;
   line-height: 0.6875rem;
   text-transform: uppercase;
   color: #334D5C;
 }
-.breadcrumbs>*:before
+.breadcrumbs li:before
 {
   content: "/";
   color: #aaa;
@@ -27,14 +34,14 @@
   position: relative;
   top: 1px;
 }
-.breadcrumbs>.current {
+.breadcrumbs li.current {
   font-weight: bold;
 }
-.breadcrumbs>*.current {
+.breadcrumbs li.current {
   cursor: default;
   color: #333;
 }
-.breadcrumbs>* a {
+.breadcrumbs li a {
   color: #1a6bc7;
   text-decoration:none;
 }
