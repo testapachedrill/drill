@@ -351,7 +351,7 @@ span.expand.show, span.contract.show {
   .page-wrap #footer {
     width: auto;
   }
-  .breadcrumbs ul.force-expand li:first-of-type {
+  .breadcrumbs ul.force-expand {
     margin-left: 301px;
   }
 }
